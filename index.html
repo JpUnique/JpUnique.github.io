@@ -1,427 +1,555 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>JpUnique - Mobile & Backend Engineer</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --secondary: #0f172a;
-            --accent: #8b5cf6;
-            --light: #f8fafc;
-            --dark: #0f172a;
-        }
+      :root {
+        --primary: #2563eb;
+        --secondary: #0f172a;
+        --accent: #8b5cf6;
+        --light: #f8fafc;
+        --dark: #0f172a;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-        body {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            color: var(--light);
-            line-height: 1.6;
-            padding: 2rem;
-            min-height: 100vh;
-        }
+      body {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: var(--light);
+        line-height: 1.6;
+        padding: 2rem;
+        min-height: 100vh;
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
 
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 2rem;
-        }
+      header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        padding-bottom: 2rem;
+      }
 
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 2px;
+      header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        border-radius: 2px;
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 700;
+      }
+
+      .tagline {
+        font-size: 1.5rem;
+        opacity: 0.9;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 1.4;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .about {
+        background: rgba(30, 41, 59, 0.6);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .tech-stack {
+        background: rgba(30, 41, 59, 0.6);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+        position: relative;
+        display: inline-block;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--accent);
+        border-radius: 2px;
+      }
+
+      .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .expertise-card {
+        background: rgba(15, 23, 42, 0.7);
+        padding: 1.5rem;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .expertise-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border-color: rgba(139, 92, 246, 0.3);
+      }
+
+      .expertise-card h3 {
+        color: var(--accent);
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+      }
+
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .tech-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: rgba(15, 23, 42, 0.7);
+        padding: 1rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .tech-item:hover {
+        transform: scale(1.1);
+        background: rgba(37, 99, 235, 0.2);
+        border-color: var(--primary);
+      }
+
+      .tech-item img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .tech-item span {
+        font-size: 0.8rem;
+        text-align: center;
+      }
+
+      .contact {
+        background: rgba(30, 41, 59, 0.6);
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .contact-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.5rem;
+        background: rgba(37, 99, 235, 0.2);
+        border-radius: 50px;
+        text-decoration: none;
+        color: var(--light);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .contact-link:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+      }
+
+      .contact-link i {
+        font-size: 1.2rem;
+      }
+
+      .highlight {
+        background: linear-gradient(
+          90deg,
+          transparent 50%,
+          rgba(139, 92, 246, 0.2) 50%
+        );
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          grid-template-columns: 1fr;
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
+          font-size: 2.5rem;
         }
 
         .tagline {
-            font-size: 1.5rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.4;
+          font-size: 1.2rem;
         }
-
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .about {
-            background: rgba(30, 41, 59, 0.6);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .tech-stack {
-            background: rgba(30, 41, 59, 0.6);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .expertise-card {
-            background: rgba(15, 23, 42, 0.7);
-            padding: 1.5rem;
-            border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .expertise-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-color: rgba(139, 92, 246, 0.3);
-        }
-
-        .expertise-card h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .tech-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: rgba(15, 23, 42, 0.7);
-            padding: 1rem;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .tech-item:hover {
-            transform: scale(1.1);
-            background: rgba(37, 99, 235, 0.2);
-            border-color: var(--primary);
-        }
-
-        .tech-item img {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-        }
-
-        .tech-item span {
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        .contact {
-            background: rgba(30, 41, 59, 0.6);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: rgba(37, 99, 235, 0.2);
-            border-radius: 50px;
-            text-decoration: none;
-            color: var(--light);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-link:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
-        }
-
-        .contact-link i {
-            font-size: 1.2rem;
-        }
-
-        .highlight {
-            background: linear-gradient(90deg, transparent 50%, rgba(139, 92, 246, 0.2) 50%);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .content {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            .tagline {
-                font-size: 1.2rem;
-            }
-        }
+      }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>JpUnique</h1>
-            <p class="tagline">Mobile & Backend Engineer | Cloud & DevOps Specialist</p>
-            <p>5+ years building scalable solutions across mobile, backend, and cloud infrastructure</p>
-        </header>
+      <header>
+        <h1>JpUnique</h1>
+        <p class="tagline">
+          Mobile & Backend Engineer | Cloud & DevOps Specialist
+        </p>
+        <p>
+          5+ years building scalable solutions across mobile, backend, and cloud
+          infrastructure
+        </p>
+      </header>
 
-        <div class="content">
-            <div class="about">
-                <h2>About Me</h2>
-                <p>I specialize in creating robust mobile applications and scalable backend systems, with extensive experience in cloud infrastructure and DevOps practices.</p>
+      <div class="content">
+        <div class="about">
+          <h2>About Me</h2>
+          <p>
+            I specialize in creating robust mobile applications and scalable
+            backend systems, with extensive experience in cloud infrastructure
+            and DevOps practices.
+          </p>
 
-                <div class="expertise-grid">
-                    <div class="expertise-card">
-                        <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
-                        <p>Building cross-platform and native mobile applications with React Native, Flutter, and native iOS/Android technologies.</p>
-                    </div>
-
-                    <div class="expertise-card">
-                        <h3><i class="fas fa-server"></i> Backend Engineering</h3>
-                        <p>Developing high-performance APIs and microservices using Golang, Node.js, Python, and Java.</p>
-                    </div>
-
-                    <div class="expertise-card">
-                        <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                        <p>Implementing CI/CD pipelines, infrastructure as code, and cloud-native solutions on AWS and GCP.</p>
-                    </div>
-
-                    <div class="expertise-card">
-                        <h3><i class="fas fa-project-diagram"></i> Architecture</h3>
-                        <p>Designing scalable system architectures with microservices, containers, and serverless technologies.</p>
-                    </div>
-                </div>
-
-                <div style="margin-top: 2rem;">
-                    <h3>Collaboration</h3>
-                    <p>I'm currently focused on <span class="highlight">backend system optimization</span> and <span class="highlight">mobile architecture</span>. Open to collaborate on <span class="highlight">cloud-native projects</span> and innovative mobile solutions.</p>
-                </div>
+          <div class="expertise-grid">
+            <div class="expertise-card">
+              <h3><i class="fas fa-mobile-alt"></i> Mobile Development</h3>
+              <p>
+                Building cross-platform and native mobile applications with
+                React Native, Flutter, and native iOS/Android technologies.
+              </p>
             </div>
 
-            <div class="tech-stack">
-                <h2>Technical Expertise</h2>
-
-                <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" alt="Golang">
-                        <span>Golang</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript">
-                        <span>TypeScript</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-                        <span>Python</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
-                        <span>Java</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash">
-                        <span>Bash</span>
-                    </div>
-                </div>
-
-                <h3 style="margin-top: 2rem;"><i class="fas fa-mobile"></i> Mobile Technologies</h3>
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Native">
-                        <span>React Native</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter">
-                        <span>Flutter</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android">
-                        <span>Android</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" alt="iOS">
-                        <span>iOS</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase">
-                        <span>Firebase</span>
-                    </div>
-                </div>
-
-                <h3 style="margin-top: 2rem;"><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS">
-                        <span>AWS</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP">
-                        <span>GCP</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes">
-                        <span>K8s</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
-                        <span>Docker</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" alt="Terraform">
-                        <span>Terraform</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" alt="Prometheus">
-                        <span>Prometheus</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg" alt="Ansible">
-                        <span>Ansible</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins">
-                        <span>Jenkins</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/argocd/argocd-original.svg" alt="ArgoCD">
-                        <span>ArgoCD</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" alt="Grafana">
-                        <span>Grafana</span>
-                    </div>
-                </div>
-
-                <h3 style="margin-top: 2rem;"><i class="fas fa-database"></i> Databases</h3>
-                <div class="tech-grid">
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL">
-                        <span>PostgreSQL</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
-                        <span>MongoDB</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis">
-                        <span>Redis</span>
-                    </div>
-                    <div class="tech-item">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
-                        <span>MySQL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="contact">
-            <h2>Get In Touch</h2>
-            <p>Have a project in mind or want to discuss opportunities? Feel free to reach out!</p>
-
-            <div class="contact-links">
-                <a href="mailto:jpunique1234@gmail.com" class="contact-link">
-                    <i class="fas fa-envelope"></i> Email Me
-                </a>
-                <a href="https://www.linkedin.com/in/johnpaul-nwaekwu-5a7053352/?trk=opento_sprofile_details" target="_blank" class="contact-link">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://github.com/JpUnique" target="_blank" class="contact-link">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
+            <div class="expertise-card">
+              <h3><i class="fas fa-server"></i> Backend Engineering</h3>
+              <p>
+                Developing high-performance APIs and microservices using Golang,
+                Node.js, Python, and Java.
+              </p>
             </div>
 
-            <p style="margin-top: 2rem; font-style: italic;">
-                "Building the bridge between innovative ideas and robust technical solutions"
+            <div class="expertise-card">
+              <h3><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+              <p>
+                Implementing CI/CD pipelines, infrastructure as code, and
+                cloud-native solutions on AWS and GCP.
+              </p>
+            </div>
+
+            <div class="expertise-card">
+              <h3><i class="fas fa-project-diagram"></i> Architecture</h3>
+              <p>
+                Designing scalable system architectures with microservices,
+                containers, and serverless technologies.
+              </p>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem">
+            <h3>Collaboration</h3>
+            <p>
+              I'm currently focused on
+              <span class="highlight">backend system optimization</span> and
+              <span class="highlight">mobile architecture</span>. Open to
+              collaborate on
+              <span class="highlight">cloud-native projects</span> and
+              innovative mobile solutions.
             </p>
+          </div>
         </div>
+
+        <div class="tech-stack">
+          <h2>Technical Expertise</h2>
+
+          <h3><i class="fas fa-code"></i> Programming Languages</h3>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg"
+                alt="Golang"
+              />
+              <span>Golang</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                alt="TypeScript"
+              />
+              <span>TypeScript</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                alt="Python"
+              />
+              <span>Python</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                alt="Java"
+              />
+              <span>Java</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                alt="JavaScript"
+              />
+              <span>JavaScript</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg"
+                alt="Bash"
+              />
+              <span>Bash</span>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 2rem">
+            <i class="fas fa-mobile"></i> Mobile Technologies
+          </h3>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                alt="React Native"
+              />
+              <span>React Native</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
+                alt="Flutter"
+              />
+              <span>Flutter</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg"
+                alt="Android"
+              />
+              <span>Android</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg"
+                alt="iOS"
+              />
+              <span>iOS</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                alt="Firebase"
+              />
+              <span>Firebase</span>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 2rem">
+            <i class="fas fa-cloud"></i> Cloud & DevOps
+          </h3>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                alt="AWS"
+              />
+              <span>AWS</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+                alt="GCP"
+              />
+              <span>GCP</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
+                alt="Kubernetes"
+              />
+              <span>K8s</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                alt="Docker"
+              />
+              <span>Docker</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg"
+                alt="Terraform"
+              />
+              <span>Terraform</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg"
+                alt="Prometheus"
+              />
+              <span>Prometheus</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg"
+                alt="Ansible"
+              />
+              <span>Ansible</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg"
+                alt="Jenkins"
+              />
+              <span>Jenkins</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/argocd/argocd-original.svg"
+                alt="ArgoCD"
+              />
+              <span>ArgoCD</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg"
+                alt="Grafana"
+              />
+              <span>Grafana</span>
+            </div>
+          </div>
+
+          <h3 style="margin-top: 2rem">
+            <i class="fas fa-database"></i> Databases
+          </h3>
+          <div class="tech-grid">
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                alt="PostgreSQL"
+              />
+              <span>PostgreSQL</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                alt="MongoDB"
+              />
+              <span>MongoDB</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
+                alt="Redis"
+              />
+              <span>Redis</span>
+            </div>
+            <div class="tech-item">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+                alt="MySQL"
+              />
+              <span>MySQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact">
+        <h2>Get In Touch</h2>
+        <p>
+          Have a project in mind or want to discuss opportunities? Feel free to
+          reach out!
+        </p>
+
+        <div class="contact-links">
+          <a href="jpunique1234@gmail.com" class="contact-link">
+            <i class="fas fa-envelope"></i> Email Me
+          </a>
+          <a
+            href="https://www.linkedin.com/in/johnpaul-nwaekwu-5a7053352/?trk=opento_sprofile_details"
+            target="_blank"
+            class="contact-link"
+          >
+            <i class="fab fa-linkedin"></i> LinkedIn
+          </a>
+          <a
+            href="https://github.com/JpUnique"
+            target="_blank"
+            class="contact-link"
+          >
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+
+        <p style="margin-top: 2rem; font-style: italic">
+          "Building the bridge between innovative ideas and robust technical
+          solutions"
+        </p>
+      </div>
     </div>
-</body>
+  </body>
 </html>
